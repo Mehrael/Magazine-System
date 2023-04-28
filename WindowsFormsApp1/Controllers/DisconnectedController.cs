@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.Controllers
     {
         protected string conn { get; set; }
         protected string table { get; set; }
-
         protected OracleDataAdapter adapter { get; set; }
         protected OracleConnection orclConn { get; set; }
         protected OracleCommand command { get; set; }

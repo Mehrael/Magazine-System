@@ -42,3 +42,4 @@ C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\bin\Deb
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CommentsReport.resources
+C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GenerateReports.resources

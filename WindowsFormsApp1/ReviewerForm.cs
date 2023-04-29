@@ -189,5 +189,13 @@ namespace WindowsFormsApp1
             //    magazines_list.SetItemCheckState(i, CheckState.Unchecked);
             //}
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            GenerateReports gen = new GenerateReports();
+            gen.Closed+= (s, args) => this.Close();
+            gen.Show();
+        }
     }
 }

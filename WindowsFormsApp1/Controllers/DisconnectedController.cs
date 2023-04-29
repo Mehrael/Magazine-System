@@ -36,20 +36,6 @@ namespace WindowsFormsApp1.Controllers
             return ds;
         }
 
-        protected void UpdateTable(string sql, object[] obj)
-        {
-            adapter = new OracleDataAdapter(sql, conn);
-
-            OracleCommandBuilder builder = new OracleCommandBuilder(adapter);
-
-            ds = new DataSet();
-
-            adapter.Fill(ds);
-            ds.Tables[0].Rows.Add(obj);
-
-            adapter.Update(ds);
-        }
-
         protected int AffectData(string sql)
         {
             orclConn = new OracleConnection(conn);
@@ -69,6 +55,20 @@ namespace WindowsFormsApp1.Controllers
             var id = (ds.Tables[0].Rows[0]);
 
             return (Decimal)id[0] + 1;
+        }
+
+        protected void UpdateTable(string sql, object[] obj)
+        {
+            adapter = new OracleDataAdapter(sql, conn);
+
+            OracleCommandBuilder builder = new OracleCommandBuilder(adapter);
+
+            ds = new DataSet();
+
+            adapter.Fill(ds);
+            ds.Tables[0].Rows.Add(obj);
+
+            adapter.Update(ds);
         }
     }
 }

@@ -59,6 +59,13 @@ namespace WindowsFormsApp2
                 form2.Closed += (s, args) => this.Close();
                 form2.Show();
             }
+            else if(user.RoleId == 1)
+            {
+                this.Hide();
+                var form2 = new UserCommentForm();
+                form2.Closed += (s, args) => this.Close();
+                form2.Show();
+            }
             else
             {
                 MessageBox.Show("You are not a manager or reviewer");

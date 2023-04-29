@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-   public class Magazine
+    public class Magazine
     {
         public Decimal id { get; set; }
         public String Title { get; set; }
@@ -17,6 +17,6 @@ namespace WindowsFormsApp1.Models
         public Decimal Published { get; set; }
         public String MagazineCover { get; set; }
         public Decimal likesCount { get; set; }
-        public User Author;
+        public User Author { get; set; }
     }
 }

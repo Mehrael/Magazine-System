@@ -11,7 +11,7 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers.Subscriber
 {
-    class MagazineController: DisconnectedController
+    class MagazineController : DisconnectedController
     {
         public MagazineController()
         {
@@ -25,7 +25,7 @@ namespace WindowsFormsApp1.Controllers.Subscriber
             var data = FillData(sql).Tables[0].Rows;
 
             var magazines = new List<Magazine>();
-            for(int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Count; i++)
             {
                 magazines.Add(new Magazine
                 {
@@ -44,16 +44,17 @@ namespace WindowsFormsApp1.Controllers.Subscriber
             try
             {
                 string sql = $"SELECT ID, TITLE, DESCRIPTION, MAGAZINECOVER, CONTENT, AUTHORID " +
-                $"FROM {table} WHERE {table}.ID = {id} AND WHERE PUBLISHED = 1";
+                $"FROM {table} WHERE {table}.ID = {id} AND PUBLISHED = 1";
 
                 var data = FillData(sql).Tables[0].Rows;
                 var magazineId = (Decimal)data[0]["ID"];
 
                 string authorSql = $"SELECT ID, NAME FROM USERS WHERE ID = {data[0]["AUTHORID"]}";
 
-                var author = FillData(sql).Tables[0].Rows[0];
+                var author = FillData(authorSql).Tables[0].Rows[0];
 
-                var likesCount = (new LikeController()).GetLikes(id);
+                var likesCount = new LikeController();
+                Decimal count = likesCount.GetLikes(id);
 
                 return new Magazine
                 {
@@ -62,14 +63,15 @@ namespace WindowsFormsApp1.Controllers.Subscriber
                     Content = (String)data[0]["CONTENT"],
                     Description = (String)data[0]["DESCRIPTION"],
                     MagazineCover = (String)data[0]["MAGAZINECOVER"],
-                    likesCount = likesCount,
+                    likesCount = Convert.ToInt32(count),
                     Author = new User
                     {
                         Id = (Decimal)author["ID"],
                         Name = (String)author["NAME"],
                     }
                 };
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
                 return null;

@@ -16,5 +16,7 @@ namespace WindowsFormsApp1.Models
         public Decimal Approved { get; set; }
         public Decimal Published { get; set; }
         public String MagazineCover { get; set; }
+        public Decimal likesCount { get; set; }
+        public User Author;
     }
 }

@@ -39,7 +39,7 @@ C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\bin\Deb
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\bin\Debug\stdole.dll
-C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
-C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CommentsReport.resources
 C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GenerateReports.resources
+C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\Windows 7\Source\Repos\Mehrael\Magazine-System\WindowsFormsApp1\bin\Debug\Guna.UI2.dll

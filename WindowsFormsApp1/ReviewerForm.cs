@@ -21,9 +21,10 @@ namespace WindowsFormsApp1
     
         ConnectedController connected=new ConnectedController();
     
-        public ReviewerForm()
+        public ReviewerForm(User user)
         {
             InitializeComponent();
+            gg = user;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            gg.RoleId = 2;
+           
 
             ConnectedController connected = new ConnectedController();
             List<Magazine> notApprovedMagazine = connected.GetUnapporvedMagazines();

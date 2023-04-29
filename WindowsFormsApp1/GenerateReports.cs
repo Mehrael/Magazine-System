@@ -23,18 +23,12 @@ namespace WindowsFormsApp1
 
         private void generate_usrs_rep_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1 users = new Form1();
-            users.Closed+=(s, args) => this.Close();
-            users.Show();
+        
         }
 
         private void generate_mags_rep_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            CommentsReport comments = new CommentsReport();
-            comments.Closed += (s, args) => this.Close();
-            comments.Show();
+           
         }
 
         private void tabPage1_Click(object sender, EventArgs e)

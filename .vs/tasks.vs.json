@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-Comment",
+      "appliesTo": "WindowsFormsApp1/Models/Comment.cs",
+      "type": "launch"
+    }
+  ]
+}

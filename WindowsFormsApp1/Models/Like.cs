@@ -8,9 +8,9 @@ namespace WindowsFormsApp1.Models
 {
     class Like
     {
-        public int id;
-        public bool isLike;
-        public int subscriberId;
-        public int magazineId;
+        public Decimal ID;
+        public Decimal LIKE_DISLIKE;
+        public Decimal SUBSCRIBERID;
+        public Decimal MAGAZINEID;
     }
 }

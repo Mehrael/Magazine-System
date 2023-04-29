@@ -25,18 +25,7 @@ namespace WindowsFormsApp1.Controllers
             conn = "Data Source=orcl; User Id=scott; Password=tiger;";
         }
 
-        public string GetLastRecord(string table)
-        {
-            string getLastCommentSql = $"SELECT ID FROM {table} ORDER BY ID DESC LIMIT 1";
-
-            ds = FillData(getLastCommentSql);
-
-            int id = (int)(ds.Tables[0].Rows[0]["ID"]) + 1;
-
-            return id.ToString();
-        }
-
-        public DataSet FillData(string sql)
+        protected DataSet FillData(string sql)
         {
             adapter = new OracleDataAdapter(sql, conn);
 
@@ -47,7 +36,21 @@ namespace WindowsFormsApp1.Controllers
             return ds;
         }
 
-        public int AffectData(string sql)
+        protected void UpdateTable(string sql, object[] obj)
+        {
+            adapter = new OracleDataAdapter(sql, conn);
+
+            OracleCommandBuilder builder = new OracleCommandBuilder(adapter);
+
+            ds = new DataSet();
+
+            adapter.Fill(ds);
+            ds.Tables[0].Rows.Add(obj);
+
+            adapter.Update(ds);
+        }
+
+        protected int AffectData(string sql)
         {
             orclConn = new OracleConnection(conn);
             command = new OracleCommand(sql, orclConn);
@@ -57,56 +60,15 @@ namespace WindowsFormsApp1.Controllers
             return numRowsAffected;
         }
 
-        public DataSet Get()
+        protected Decimal GetLastRecord(string table)
         {
-            table = "likes";
-            string sql = $"select * from {table}";
-            orclConn = new OracleConnection(conn);
-            adapter = new OracleDataAdapter(sql, orclConn);
-            ds = new DataSet();
+            string getLastCommentSql = $"SELECT MAX (ID) FROM {table}";
 
-            adapter.Fill(ds);
+            ds = FillData(getLastCommentSql);
 
-            return ds;
-        }
+            var id = (ds.Tables[0].Rows[0]);
 
-        public void Update(int magazineId)
-        {
-            // Create a new dataset
-            DataSet like = new DataSet();
-
-            // Fill the dataset with data from the server
-            using (orclConn = new OracleConnection(conn))
-            {
-                OracleDataAdapter da = new OracleDataAdapter($"SELECT * FROM {table} where magazineId={magazineId}", orclConn);
-                da.Fill(like);
-            }
-            /*
-             GetType().GetProperties()
-             [
-              {
-                id: 1
-              },
-              {
-                name: "ahmed"
-              }
-             ]
-             */
-            // Modify the data in the dataset
-            /*foreach (var m in like.GetType().GetProperties()){
-                ds.Tables[0].Rows[0][m.Name] = m.GetValue(this, null);
-            }*/
-
-            ds.Tables[0].Rows[0]["isLike"] = 0;
-
-            // Update the changes back to the server
-            using (OracleConnection orclConn = new OracleConnection(conn))
-            {
-                OracleDataAdapter da = new OracleDataAdapter($"SELECT * FROM {table}", conn);
-
-                OracleCommandBuilder cb = new OracleCommandBuilder(da);
-                da.Update(ds, table);
-            }
+            return (Decimal)id[0] + 1;
         }
     }
 }

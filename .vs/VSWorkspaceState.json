@@ -3,8 +3,8 @@
     "",
     "\\WindowsFormsApp1",
     "\\WindowsFormsApp1\\Controllers",
-    "\\WindowsFormsApp1\\Models"
+    "\\WindowsFormsApp1\\Controllers\\Subscriber"
   ],
-  "SelectedNode": "\\DatabaseV2.sql",
+  "SelectedNode": "\\WindowsFormsApp1\\Controllers\\Subscriber\\MagazineController.cs",
   "PreviewInSolutionExplorer": false
 }

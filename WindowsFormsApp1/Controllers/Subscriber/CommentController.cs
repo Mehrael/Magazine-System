@@ -7,41 +7,60 @@ using System.Data;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Collections;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers.Subscriber
 {
     class CommentController: DisconnectedController
     {
-        private int MagazineId;
-
-        public CommentController(int magazineId)
+        public CommentController()
         {
             table = "Comments";
-            MagazineId = magazineId;
         }
 
-        public bool Create(string comment)
+        public bool Create(Comment comment, int magazineId)
         {
-            string id = GetLastRecord(table);
+            try
+            {
+                var id = GetLastRecord(table);
 
-            string sql = $"INSERT INTO {table} (ID, COMMENT, SUBSCRIBERID, MAGAZINEID) " +
-                $"VALUES ({id}, {comment}, 0, {MagazineId})";
+                string sql = $"INSERT INTO {table} (ID, USERCOMMENT, SUBSCRIBERID, MAGAZINEID) " +
+                    $"VALUES ({id}, {comment.USERCOMMENT}, {comment.SUBSCRIBERID}, {comment.MAGAZINEID})";
 
-            return AffectData(sql) > 0;
+                return AffectData(sql) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
-        public bool Update(int id, string comment)
+        public bool Update(Comment comment)
         {
-            string sql = $"UPDATE {table} SET COMMENT = {comment} WHERE ID = {id}";
-            
-            return AffectData(sql) > 0;
+            try
+            {
+                string sql = $"UPDATE {table} SET USERCOMMENT = {comment.USERCOMMENT} WHERE ID = {comment.ID}";
+
+                return AffectData(sql) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public bool Delete(int id)
         {
-            string sql = $"DELETE FROM {table} WHERE ID = {id}";
+            try
+            {
+                string sql = $"DELETE FROM {table} WHERE ID = {id}";
 
-            return AffectData(sql) > 0;
+                return AffectData(sql) > 0;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

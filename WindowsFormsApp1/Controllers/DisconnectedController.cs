@@ -56,5 +56,19 @@ namespace WindowsFormsApp1.Controllers
 
             return (Decimal)id[0] + 1;
         }
+
+        protected void UpdateTable(string sql, object[] obj)
+        {
+            adapter = new OracleDataAdapter(sql, conn);
+
+            OracleCommandBuilder builder = new OracleCommandBuilder(adapter);
+
+            ds = new DataSet();
+
+            adapter.Fill(ds);
+            ds.Tables[0].Rows.Add(obj);
+
+            adapter.Update(ds);
+        }
     }
 }

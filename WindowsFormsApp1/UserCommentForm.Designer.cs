@@ -36,14 +36,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Title_txt = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Content_txt = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.magazine_list = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
             this.Author_txt = new System.Windows.Forms.RichTextBox();
             this.Like_btn = new System.Windows.Forms.Button();
             this.Dislike_btn = new System.Windows.Forms.Button();
             this.LikesCount_lbl = new System.Windows.Forms.Label();
+            this.Content_txt = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +86,7 @@
             this.Submit_btn.TabIndex = 2;
             this.Submit_btn.Text = "Submit";
             this.Submit_btn.UseVisualStyleBackColor = true;
+            this.Submit_btn.Click += new System.EventHandler(this.Submit_btn_Click_1);
             // 
             // Comment_txt
             // 
@@ -100,11 +101,11 @@
             // 
             this.groupBox1.Controls.Add(this.Submit_btn);
             this.groupBox1.Controls.Add(this.Comment_txt);
-            this.groupBox1.Location = new System.Drawing.Point(33, 649);
+            this.groupBox1.Location = new System.Drawing.Point(33, 654);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(1196, 212);
+            this.groupBox1.Size = new System.Drawing.Size(1196, 207);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Write a comment";
@@ -128,26 +129,6 @@
             this.label1.Size = new System.Drawing.Size(154, 17);
             this.label1.TabIndex = 14;
             this.label1.Text = "Selected magazine title";
-            // 
-            // Content_txt
-            // 
-            this.Content_txt.Location = new System.Drawing.Point(431, 498);
-            this.Content_txt.Margin = new System.Windows.Forms.Padding(4);
-            this.Content_txt.Name = "Content_txt";
-            this.Content_txt.ReadOnly = true;
-            this.Content_txt.Size = new System.Drawing.Size(775, 112);
-            this.Content_txt.TabIndex = 10;
-            this.Content_txt.Text = "";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(427, 478);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Selected magazine content";
             // 
             // magazine_list
             // 
@@ -187,6 +168,7 @@
             this.Like_btn.TabIndex = 17;
             this.Like_btn.Text = "Like";
             this.Like_btn.UseVisualStyleBackColor = true;
+            this.Like_btn.Click += new System.EventHandler(this.Like_btn_Click);
             // 
             // Dislike_btn
             // 
@@ -196,6 +178,7 @@
             this.Dislike_btn.TabIndex = 17;
             this.Dislike_btn.Text = "DisLike";
             this.Dislike_btn.UseVisualStyleBackColor = true;
+            this.Dislike_btn.Click += new System.EventHandler(this.Dislike_btn_Click);
             // 
             // LikesCount_lbl
             // 
@@ -205,6 +188,26 @@
             this.LikesCount_lbl.Size = new System.Drawing.Size(53, 17);
             this.LikesCount_lbl.TabIndex = 18;
             this.LikesCount_lbl.Text = "0 Likes";
+            // 
+            // Content_txt
+            // 
+            this.Content_txt.Location = new System.Drawing.Point(431, 499);
+            this.Content_txt.Margin = new System.Windows.Forms.Padding(4);
+            this.Content_txt.Name = "Content_txt";
+            this.Content_txt.ReadOnly = true;
+            this.Content_txt.Size = new System.Drawing.Size(775, 112);
+            this.Content_txt.TabIndex = 10;
+            this.Content_txt.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(427, 479);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(179, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Selected magazine content";
             // 
             // UserCommentForm
             // 
@@ -247,13 +250,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox Title_txt;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox Content_txt;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListView magazine_list;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox Author_txt;
         private System.Windows.Forms.Button Like_btn;
         private System.Windows.Forms.Button Dislike_btn;
         private System.Windows.Forms.Label LikesCount_lbl;
+        private System.Windows.Forms.RichTextBox Content_txt;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -53,7 +53,8 @@ namespace WindowsFormsApp1.Controllers.Subscriber
 
                 var author = FillData(authorSql).Tables[0].Rows[0];
 
-                var likesCount = (new LikeController()).GetLikes(id);
+                var likesCount = new LikeController();
+                Decimal count = likesCount.GetLikes(id);
 
                 return new Magazine
                 {
@@ -62,7 +63,7 @@ namespace WindowsFormsApp1.Controllers.Subscriber
                     Content = (String)data[0]["CONTENT"],
                     Description = (String)data[0]["DESCRIPTION"],
                     MagazineCover = (String)data[0]["MAGAZINECOVER"],
-                    likesCount = likesCount,
+                    likesCount = Convert.ToInt32(count),
                     Author = new User
                     {
                         Id = (Decimal)author["ID"],

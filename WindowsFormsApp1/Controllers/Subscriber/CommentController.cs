@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.Controllers.Subscriber
             table = "Comments";
         }
 
-        public bool Create(Comment comment, int magazineId)
+        public Comment Create(Comment comment, int magazineId)
         {
             try
             {
@@ -27,25 +27,31 @@ namespace WindowsFormsApp1.Controllers.Subscriber
                 string sql = $"INSERT INTO {table} (ID, USERCOMMENT, SUBSCRIBERID, MAGAZINEID) " +
                     $"VALUES ({id}, {comment.USERCOMMENT}, {comment.SUBSCRIBERID}, {comment.MAGAZINEID})";
 
-                return AffectData(sql) > 0;
+                UpdateTable($"SELECT * FROM COMMENTS", new object[] { id, comment.USERCOMMENT, comment.SUBSCRIBERID, comment.MAGAZINEID });
+
+                comment.ID = id;
+
+                return comment;
             }
             catch (Exception e)
             {
-                return false;
+                return null;
             }
         }
 
-        public bool Update(Comment comment)
+        public Comment Update(Comment comment)
         {
             try
             {
                 string sql = $"UPDATE {table} SET USERCOMMENT = {comment.USERCOMMENT} WHERE ID = {comment.ID}";
 
-                return AffectData(sql) > 0;
+                UpdateTable($"SELECT * FROM COMMENTS", new object[] { comment.ID, comment.USERCOMMENT, comment.SUBSCRIBERID, comment.MAGAZINEID });
+
+                return comment;
             }
             catch (Exception e)
             {
-                return false;
+                return null;
             }
         }
 

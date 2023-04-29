@@ -12,28 +12,29 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers.Subscriber
 {
-    class LikeController: DisconnectedController
+    class LikeController : DisconnectedController
     {
         public LikeController()
         {
             table = "LIKES";
         }
-        public Decimal GetLikes(int magazineId) {
+        public Decimal GetLikes(int magazineId)
+        {
             try
             {
-                string sql = $"SELECT COUNT(ID) FROM {table} WHERE MAGAZINEID = {magazineId} AND LIKE_DESLIKE = 1";
+                string sql = $"SELECT COUNT(ID) FROM {table} WHERE MAGAZINEID = {magazineId} AND LIKE_DISLIKE = 1";
 
                 var data = FillData(sql).Tables[0].Rows[0][0];
 
                 return (Decimal)data;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return 0;
             }
         }
 
-        public bool Create(Like like)
+        public Like Create(Like like)
         {
             try
             {
@@ -42,25 +43,31 @@ namespace WindowsFormsApp1.Controllers.Subscriber
                 string sql = $"INSERT INTO {table} (ID, LIKE_DISLIKE, SUBSCRIBERID, MAGAZINEID) " +
                     $"VALUES ({id}, {like.LIKE_DISLIKE}, {like.SUBSCRIBERID}, {like.MAGAZINEID})";
 
-                return AffectData(sql) > 0;
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
-}
+                UpdateTable($"SELECT * FROM Likes", new object[] { id, like.LIKE_DISLIKE, like.SUBSCRIBERID, like.MAGAZINEID });
 
-        public bool Update(Like like)
+                like.ID = id;
+
+                return like;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public Like Update(Like like)
         {
             try
             {
                 string sql = $"UPDATE {table} SET LIKE_DISLIKE = {like.LIKE_DISLIKE} WHERE MAGAZINEID = {like.MAGAZINEID}";
 
-                return AffectData(sql) > 0;
+                UpdateTable($"SELECT * FROM COMMENTS", new object[] { like.ID, like.LIKE_DISLIKE, like.SUBSCRIBERID, like.MAGAZINEID });
+
+                return like;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return false;
+                return null;
             }
         }
     }

@@ -120,11 +120,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(18, 692);
+            this.button2.Location = new System.Drawing.Point(18, 676);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(441, 23);
+            this.button2.Size = new System.Drawing.Size(219, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Test Reports";
+            this.button2.Text = "Generate Reports";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 727);
+            this.ClientSize = new System.Drawing.Size(921, 705);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.magazines_list_label);

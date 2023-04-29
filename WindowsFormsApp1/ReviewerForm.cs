@@ -16,7 +16,9 @@ namespace WindowsFormsApp1
 { 
     public partial class ReviewerForm : Form
     {
+        User gg = new User();
 
+    
         ConnectedController connected=new ConnectedController();
     
         public ReviewerForm()
@@ -26,19 +28,24 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
-      
-          
+
+         
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConnectedController connected = new ConnectedController();
+            gg.RoleId = 2;
 
-      
+            ConnectedController connected = new ConnectedController();
             List<Magazine> notApprovedMagazine = connected.GetUnapporvedMagazines();
             magazines_list.DataSource = notApprovedMagazine;
             magazines_list.DisplayMember = "Title";
             magazines_list.ValueMember = "Id";
+
+            if (gg.RoleId != 2)
+                button2.Hide();
+            else
+                button2.Show();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

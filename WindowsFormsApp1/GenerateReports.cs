@@ -12,6 +12,10 @@ namespace WindowsFormsApp1
 {
     public partial class GenerateReports : Form
     {
+        UsersReport usersReport=new UsersReport();
+
+        MagazineReport magazineReport = new MagazineReport();
+    
         public GenerateReports()
         {
             InitializeComponent();
@@ -31,6 +35,35 @@ namespace WindowsFormsApp1
             CommentsReport comments = new CommentsReport();
             comments.Closed += (s, args) => this.Close();
             comments.Show();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void generate_report_Click(object sender, EventArgs e)
+        {
+            usersReport.SetParameterValue(0, Convert.ToDateTime(startdate_txt.Text));
+            usersReport.SetParameterValue(1, Convert.ToDateTime(enddate_txt.Text));
+            crystalReportViewer2.ReportSource = usersReport;
+        }
+
+        private void GenerateReports_Load(object sender, EventArgs e)
+        {
+         
+            crystalReportViewer1.ReportSource = magazineReport;
+
+        }
+
+        private void startdate_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,68 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reviewTextBox = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.send_to_label = new System.Windows.Forms.Label();
-            this.send_btn = new System.Windows.Forms.Button();
-            this.authors_comboBox = new System.Windows.Forms.ComboBox();
             this.magazine_description_txt = new System.Windows.Forms.RichTextBox();
             this.magazines_list = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.magazines_list_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.reviewTextBox = new System.Windows.Forms.RichTextBox();
+            this.send_btn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // reviewTextBox
-            // 
-            this.reviewTextBox.Location = new System.Drawing.Point(6, 46);
-            this.reviewTextBox.Name = "reviewTextBox";
-            this.reviewTextBox.Size = new System.Drawing.Size(875, 216);
-            this.reviewTextBox.TabIndex = 0;
-            this.reviewTextBox.Text = "";
-            this.reviewTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.send_to_label);
-            this.groupBox1.Controls.Add(this.send_btn);
-            this.groupBox1.Controls.Add(this.authors_comboBox);
-            this.groupBox1.Controls.Add(this.reviewTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 362);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(897, 308);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Write a review";
-            // 
-            // send_to_label
-            // 
-            this.send_to_label.AutoSize = true;
-            this.send_to_label.Location = new System.Drawing.Point(726, 22);
-            this.send_to_label.Name = "send_to_label";
-            this.send_to_label.Size = new System.Drawing.Size(44, 13);
-            this.send_to_label.TabIndex = 3;
-            this.send_to_label.Text = "Send to";
-            // 
-            // send_btn
-            // 
-            this.send_btn.Location = new System.Drawing.Point(806, 268);
-            this.send_btn.Name = "send_btn";
-            this.send_btn.Size = new System.Drawing.Size(75, 23);
-            this.send_btn.TabIndex = 2;
-            this.send_btn.Text = "Send";
-            this.send_btn.UseVisualStyleBackColor = true;
-            this.send_btn.Click += new System.EventHandler(this.Send_Click);
-            // 
-            // authors_comboBox
-            // 
-            this.authors_comboBox.FormattingEnabled = true;
-            this.authors_comboBox.Location = new System.Drawing.Point(776, 19);
-            this.authors_comboBox.Name = "authors_comboBox";
-            this.authors_comboBox.Size = new System.Drawing.Size(121, 21);
-            this.authors_comboBox.TabIndex = 1;
-            this.authors_comboBox.SelectedIndexChanged += new System.EventHandler(this.authorsIds_comboBox_SelectedIndexChanged);
             // 
             // magazine_description_txt
             // 
@@ -139,6 +87,36 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Selected magazine description";
             // 
+            // reviewTextBox
+            // 
+            this.reviewTextBox.Location = new System.Drawing.Point(6, 19);
+            this.reviewTextBox.Name = "reviewTextBox";
+            this.reviewTextBox.Size = new System.Drawing.Size(875, 243);
+            this.reviewTextBox.TabIndex = 0;
+            this.reviewTextBox.Text = "";
+            this.reviewTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // send_btn
+            // 
+            this.send_btn.Location = new System.Drawing.Point(806, 268);
+            this.send_btn.Name = "send_btn";
+            this.send_btn.Size = new System.Drawing.Size(75, 23);
+            this.send_btn.TabIndex = 2;
+            this.send_btn.Text = "Send";
+            this.send_btn.UseVisualStyleBackColor = true;
+            this.send_btn.Click += new System.EventHandler(this.Send_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.send_btn);
+            this.groupBox1.Controls.Add(this.reviewTextBox);
+            this.groupBox1.Location = new System.Drawing.Point(12, 362);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(897, 308);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Write a review";
+            // 
             // ReviewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,24 +133,20 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox reviewTextBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox authors_comboBox;
-        private System.Windows.Forms.Button send_btn;
         private System.Windows.Forms.RichTextBox magazine_description_txt;
         private System.Windows.Forms.CheckedListBox magazines_list;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label magazines_list_label;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label send_to_label;
+        private System.Windows.Forms.RichTextBox reviewTextBox;
+        private System.Windows.Forms.Button send_btn;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

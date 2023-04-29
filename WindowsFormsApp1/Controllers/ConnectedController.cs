@@ -120,6 +120,16 @@ namespace WindowsFormsApp1.Controllers
             return authors;
 
         }
+        public decimal GenerateId(String tableName)
+        {
+            conn = new OracleConnection(ordb);
+            conn.Open();
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = "SELECT COUNT(*) FROM "+tableName;
+            decimal count =(decimal) cmd.ExecuteScalar();   
+            return ++count;
+        }
 
     }
 }

@@ -34,11 +34,7 @@ namespace WindowsFormsApp1
         {
             ConnectedController connected = new ConnectedController();
 
-            List<User> authors = connected.GetAuthors();
-            authors_comboBox.DataSource = authors;
-            authors_comboBox.DisplayMember = "Name";
-            authors_comboBox.ValueMember = "Id";
-
+      
             List<Magazine> notApprovedMagazine = connected.GetUnapporvedMagazines();
             magazines_list.DataSource = notApprovedMagazine;
             magazines_list.DisplayMember = "Title";
@@ -67,8 +63,19 @@ namespace WindowsFormsApp1
 
         private void Send_Click(object sender, EventArgs e)
         {
-            CommentsReport frm = new CommentsReport();
-            frm.ShowDialog();
+            Feedback feedback = new Feedback();
+            Magazine mag = (Magazine)magazines_list.SelectedItem;
+            feedback.content = reviewTextBox.Text;
+            feedback.destinationId = mag.authorId;
+            feedback.id = connected.GenerateId("feedbacks");
+            feedback.MagazineId = mag.id;
+            feedback.sourceId = 12;
+           int r= connected.sendFeedbackToAuthor(feedback);
+            if (r != -1)
+                MessageBox.Show("Feedback sent!");
+            else
+                MessageBox.Show("Error, feedback not sent");
+
         }
 
         private void magazines_list_SelectedIndexChanged(object sender, EventArgs e)

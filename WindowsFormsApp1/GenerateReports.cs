@@ -32,5 +32,6 @@ namespace WindowsFormsApp1
             comments.Closed += (s, args) => this.Close();
             comments.Show();
         }
+
     }
 }

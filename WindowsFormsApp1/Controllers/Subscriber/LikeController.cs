@@ -8,34 +8,60 @@ using System.Data;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Collections;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers.Subscriber
 {
     class LikeController: DisconnectedController
     {
-        private int MagazineId;
-
-        public LikeController(int magazineId)
+        public LikeController()
         {
-            table = "Likes";
-            MagazineId = magazineId;
+            table = "LIKES";
+        }
+        public Decimal GetLikes(int magazineId) {
+            try
+            {
+                string sql = $"SELECT COUNT(ID) FROM {table} WHERE MAGAZINEID = {magazineId} AND LIKE_DESLIKE = 1";
+
+                var data = FillData(sql).Tables[0].Rows[0][0];
+
+                return (Decimal)data;
+            }
+            catch(Exception e)
+            {
+                return 0;
+            }
         }
 
-        public bool Create(int value)
+        public bool Create(Like like)
         {
-            string id = GetLastRecord(table);
+            try
+            {
+                var id = GetLastRecord(table);
 
-            string sql = $"INSERT INTO {table} (ID, LIKE_DISLIKE, SUBSCRIBERID, MAGAZINEID) " +
-                $"VALUES ({id}, {value}, 0, {MagazineId})";
+                string sql = $"INSERT INTO {table} (ID, LIKE_DISLIKE, SUBSCRIBERID, MAGAZINEID) " +
+                    $"VALUES ({id}, {like.LIKE_DISLIKE}, {like.SUBSCRIBERID}, {like.MAGAZINEID})";
 
-            return AffectData(sql) > 0;
-        }
+                return AffectData(sql) > 0;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+}
 
-        public bool Update(int id, int value)
+        public bool Update(Like like)
         {
-            string sql = $"UPDATE {table} SET LIKE_DISLIKE = {value} WHERE ID = {id}";
+            try
+            {
+                string sql = $"UPDATE {table} SET LIKE_DISLIKE = {like.LIKE_DISLIKE} WHERE MAGAZINEID = {like.MAGAZINEID}";
 
-            return AffectData(sql) > 0;
+                return AffectData(sql) > 0;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
     }
 }

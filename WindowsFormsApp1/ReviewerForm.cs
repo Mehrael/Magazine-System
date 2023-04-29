@@ -24,12 +24,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-      
-          
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             ConnectedController connected = new ConnectedController();
@@ -41,25 +35,6 @@ namespace WindowsFormsApp1
             magazines_list.ValueMember = "Id";
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-           
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void authorsIds_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void Send_Click(object sender, EventArgs e)
         {

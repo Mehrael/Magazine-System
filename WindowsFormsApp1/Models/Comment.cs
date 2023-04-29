@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.Models
 {
-    class Like
+    class Comment
     {
         public Decimal ID;
-        public Decimal LIKE_DISLIKE;
+        public String USERCOMMENT;
         public Decimal SUBSCRIBERID;
         public Decimal MAGAZINEID;
     }

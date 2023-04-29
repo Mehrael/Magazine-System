@@ -36,9 +36,10 @@
             // 
             // generate_usrs_rep
             // 
-            this.generate_usrs_rep.Location = new System.Drawing.Point(15, 78);
+            this.generate_usrs_rep.Location = new System.Drawing.Point(20, 96);
+            this.generate_usrs_rep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.generate_usrs_rep.Name = "generate_usrs_rep";
-            this.generate_usrs_rep.Size = new System.Drawing.Size(186, 35);
+            this.generate_usrs_rep.Size = new System.Drawing.Size(248, 43);
             this.generate_usrs_rep.TabIndex = 0;
             this.generate_usrs_rep.Text = "Generate user\'s data report";
             this.generate_usrs_rep.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // generate_mags_rep
             // 
-            this.generate_mags_rep.Location = new System.Drawing.Point(245, 78);
+            this.generate_mags_rep.Location = new System.Drawing.Point(327, 96);
+            this.generate_mags_rep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.generate_mags_rep.Name = "generate_mags_rep";
-            this.generate_mags_rep.Size = new System.Drawing.Size(186, 35);
+            this.generate_mags_rep.Size = new System.Drawing.Size(248, 43);
             this.generate_mags_rep.TabIndex = 1;
             this.generate_mags_rep.Text = "Generate magaziens report";
             this.generate_mags_rep.UseVisualStyleBackColor = true;
@@ -58,19 +60,22 @@
             // 
             this.groupBox1.Controls.Add(this.generate_usrs_rep);
             this.groupBox1.Controls.Add(this.generate_mags_rep);
-            this.groupBox1.Location = new System.Drawing.Point(24, 12);
+            this.groupBox1.Location = new System.Drawing.Point(32, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(462, 173);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(616, 213);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Reports generation";
             // 
             // GenerateReports
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 215);
+            this.ClientSize = new System.Drawing.Size(691, 265);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GenerateReports";
             this.Text = "GenerateReports";
             this.groupBox1.ResumeLayout(false);

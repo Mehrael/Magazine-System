@@ -12,6 +12,7 @@ namespace WindowsFormsApp1.Models
         public String Name { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
+        public String confirmPassword { get; set; }
         public Decimal RoleId { get; set; }
         public Decimal? SubscriptionId { get; set; }
     }

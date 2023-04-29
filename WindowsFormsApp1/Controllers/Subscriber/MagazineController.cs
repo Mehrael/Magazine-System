@@ -7,38 +7,74 @@ using System.Data;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 using System.Collections;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers.Subscriber
 {
-    class MagazineController: DisconnectedController
+    class MagazineController : DisconnectedController
     {
         public MagazineController()
         {
-            table = "Magazines";
+            table = "MAGAZINE";
         }
 
-        public DataSet Get()
+        public List<Magazine> Get()
         {
-            string sql = $"SELECT ID, TITLE, DESCRIPTION, MAGAZINECOVER, " +
-                $"COUNT(Comments.ID) AS COMMENTS, COUNT(Likes.ID) AS LIKES" +
-                $"FROM {table} WHERE PUBLISHED = 1" +
-                $"LEFT JOIN Comments ON {table}.ID = Comments.MagazineID " +
-                $"LEFT JOIN Likes ON {table}.ID = Likes.MagazineID WHERE Likes.Like_Dislike = 1" +
-                $"GROUP BY {table}.ID;";
+            string sql = $"SELECT ID, TITLE, DESCRIPTION, MAGAZINECOVER FROM {table} WHERE PUBLISHED = 1";
 
-            return FillData(sql);
+            var data = FillData(sql).Tables[0].Rows;
+
+            var magazines = new List<Magazine>();
+            for (int i = 0; i < data.Count; i++)
+            {
+                magazines.Add(new Magazine
+                {
+                    id = (Decimal)data[i]["ID"],
+                    Title = (String)data[i]["TITLE"],
+                    Description = (String)data[i]["DESCRIPTION"],
+                    MagazineCover = (String)data[i]["MAGAZINECOVER"],
+                });
+            }
+
+            return magazines;
         }
 
-        public DataRow Show(int id)
+        public Magazine Show(int id)
         {
-            string sql = $"SELECT ID, TITLE, DESCRIPTION, MAGAZINECOVER, CONTENT" +
-                $"Comments.* AS COMMENTS, COUNT(Likes.ID) AS LIKES" +
-                $"FROM {table} WHERE {table}.ID = {id} AND WHERE PUBLISHED = 1" +
-                $"LEFT JOIN Comments ON {table}.ID = Comments.MagazineID " +
-                $"LEFT JOIN Likes ON {table}.ID = Likes.MagazineID WHERE Likes.Like_Dislike = 1" +
-                $"GROUP BY {table}.ID;";
+            try
+            {
+                string sql = $"SELECT ID, TITLE, DESCRIPTION, MAGAZINECOVER, CONTENT, AUTHORID " +
+                $"FROM {table} WHERE {table}.ID = {id} AND PUBLISHED = 1";
 
-            return FillData(sql).Tables[0].Rows[0];
+                var data = FillData(sql).Tables[0].Rows;
+                var magazineId = (Decimal)data[0]["ID"];
+
+                string authorSql = $"SELECT ID, NAME FROM USERS WHERE ID = {data[0]["AUTHORID"]}";
+
+                var author = FillData(authorSql).Tables[0].Rows[0];
+
+                var likesCount = (new LikeController()).GetLikes(id);
+
+                return new Magazine
+                {
+                    id = magazineId,
+                    Title = (String)data[0]["TITLE"],
+                    Content = (String)data[0]["CONTENT"],
+                    Description = (String)data[0]["DESCRIPTION"],
+                    MagazineCover = (String)data[0]["MAGAZINECOVER"],
+                    likesCount = likesCount,
+                    Author = new User
+                    {
+                        Id = (Decimal)author["ID"],
+                        Name = (String)author["NAME"],
+                    }
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
         }
     }
 }

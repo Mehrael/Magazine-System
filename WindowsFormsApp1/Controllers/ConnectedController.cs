@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.Controllers
         string ordb = "Data source=orcl;User Id=scott;Password=tiger;";
         OracleConnection conn;
 
-        public int updateState(int id,int state)
+        public int updateState(Decimal id,Decimal state)
         {
             conn = new OracleConnection(ordb);
             conn.Open();

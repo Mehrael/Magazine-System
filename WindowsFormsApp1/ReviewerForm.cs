@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
-
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.Controllers;
 
@@ -18,7 +17,8 @@ namespace WindowsFormsApp1
     public partial class ReviewerForm : Form
     {
 
-        ConnectedController connected;
+        ConnectedController connected=new ConnectedController();
+    
         public ReviewerForm()
         {
             InitializeComponent();
@@ -67,26 +67,120 @@ namespace WindowsFormsApp1
 
         private void Send_Click(object sender, EventArgs e)
         {
-            var review=reviewTextBox.Text;
-            Feedback feedback = new Feedback();
-          //  feedback.sourceId=
-            //connected.sendFeedbackToAuthor();
+            CommentsReport frm = new CommentsReport();
+            frm.ShowDialog();
         }
 
         private void magazines_list_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ConnectedController connected = new ConnectedController();
             var mag = (Magazine)magazines_list.SelectedItem;
+           if(mag!=null)
             magazine_description_txt.Text = mag.Description;
-        }
-
-        private void magazines_list_DoubleClick(object sender, EventArgs e)
-        {
-          
         }
 
         private void magazines_list_SelectedValueChanged(object sender, EventArgs e)
         {
-         
+           
+                ConnectedController connected = new ConnectedController();
+                for (int i = 0; i <= (magazines_list.Items.Count - 1); i++)
+                {
+                    Magazine mag = (Magazine)magazines_list.Items[i];
+                    int r;
+                    if (magazines_list.GetItemChecked(i))
+                    {
+                        if (mag.Approved == 0)
+                        {
+                            r = connected.updateState(mag.id, 1);
+                            if (r == 1)
+                            {
+                                MessageBox.Show("Magazine approved");
+                                mag.Approved = 1;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error happend, magazien not approved");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (mag.Approved == 1)
+                        {
+                            r = connected.updateState(mag.id, 0);
+                            if (r == 1)
+                            {
+                                MessageBox.Show("Magazine approval removed");
+                                mag.Approved = 0;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error happend, magazien approval not removed");
+                            }
+                        }
+                    }
+                }
+            
+
+        }
+
+        private void magazines_list_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ConnectedController connected = new ConnectedController();
+            for (int i = 0; i <= (magazines_list.Items.Count - 1); i++)
+            {
+                Magazine mag = (Magazine)magazines_list.Items[i];
+                int r;
+                if (magazines_list.GetItemChecked(i))
+                {
+                    if (mag.Approved == 0)
+                    {
+                        r = connected.updateState(mag.id, 1);
+                        if (r == 1)
+                        {
+                            MessageBox.Show("Magazine approved");
+                            mag.Approved = 1;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error happend, magazien not approved");
+                        }
+                    }
+                }
+                else
+                {
+                    if (mag.Approved == 1)
+                    {
+                        r = connected.updateState(mag.id, 0);
+                        if (r == 1)
+                        {
+                            MessageBox.Show("Magazine approval removed");
+                            mag.Approved = 0;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error happend, magazien approval not removed");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            magazines_list.DataSource = null;
+            magazines_list.Items.Clear();
+            List<Magazine> notApprovedMagazine = connected.GetUnapporvedMagazines();
+            magazines_list.DataSource = notApprovedMagazine;
+            magazines_list.DisplayMember = "Title";
+            magazines_list.ValueMember = "Id";
+           
+            //for (int i = 0; i <= (magazines_list.Items.Count - 1); i++)
+            //{
+            //    Magazine mag = (Magazine)magazines_list.Items[i];
+            //    if (mag.Approved==0)
+            //    magazines_list.SetItemCheckState(i, CheckState.Unchecked);
+            //}
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.reviewTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.send_to_label = new System.Windows.Forms.Label();
             this.send_btn = new System.Windows.Forms.Button();
             this.authors_comboBox = new System.Windows.Forms.ComboBox();
             this.magazine_description_txt = new System.Windows.Forms.RichTextBox();
@@ -37,7 +38,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.magazines_list_label = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.send_to_label = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +62,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Write a review";
+            // 
+            // send_to_label
+            // 
+            this.send_to_label.AutoSize = true;
+            this.send_to_label.Location = new System.Drawing.Point(726, 22);
+            this.send_to_label.Name = "send_to_label";
+            this.send_to_label.Size = new System.Drawing.Size(44, 13);
+            this.send_to_label.TabIndex = 3;
+            this.send_to_label.Text = "Send to";
             // 
             // send_btn
             // 
@@ -98,9 +107,9 @@
             this.magazines_list.Name = "magazines_list";
             this.magazines_list.Size = new System.Drawing.Size(254, 304);
             this.magazines_list.TabIndex = 4;
+            this.magazines_list.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.magazines_list_ItemCheck);
             this.magazines_list.SelectedIndexChanged += new System.EventHandler(this.magazines_list_SelectedIndexChanged);
             this.magazines_list.SelectedValueChanged += new System.EventHandler(this.magazines_list_SelectedValueChanged);
-            this.magazines_list.DoubleClick += new System.EventHandler(this.magazines_list_DoubleClick);
             // 
             // button1
             // 
@@ -110,6 +119,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Refresh List";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // magazines_list_label
             // 
@@ -128,15 +138,6 @@
             this.label2.Size = new System.Drawing.Size(151, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Selected magazine description";
-            // 
-            // send_to_label
-            // 
-            this.send_to_label.AutoSize = true;
-            this.send_to_label.Location = new System.Drawing.Point(726, 22);
-            this.send_to_label.Name = "send_to_label";
-            this.send_to_label.Size = new System.Drawing.Size(44, 13);
-            this.send_to_label.TabIndex = 3;
-            this.send_to_label.Text = "Send to";
             // 
             // ReviewerForm
             // 

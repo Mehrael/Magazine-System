@@ -16,25 +16,58 @@ namespace WindowsFormsApp1
 { 
     public partial class ReviewerForm : Form
     {
+        User gg = new User();
 
+    
         ConnectedController connected=new ConnectedController();
     
-        public ReviewerForm()
+        public ReviewerForm(User user)
         {
             InitializeComponent();
+            gg = user;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+         
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConnectedController connected = new ConnectedController();
+           
 
-      
+            ConnectedController connected = new ConnectedController();
             List<Magazine> notApprovedMagazine = connected.GetUnapporvedMagazines();
             magazines_list.DataSource = notApprovedMagazine;
             magazines_list.DisplayMember = "Title";
             magazines_list.ValueMember = "Id";
+
+            if (gg.RoleId != 2)
+                button2.Hide();
+            else
+                button2.Show();
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void authorsIds_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
 
         private void Send_Click(object sender, EventArgs e)
         {

@@ -42,21 +42,19 @@
             // 
             // magazine_description_txt
             // 
-            this.magazine_description_txt.Location = new System.Drawing.Point(415, 53);
-            this.magazine_description_txt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.magazine_description_txt.Location = new System.Drawing.Point(311, 43);
             this.magazine_description_txt.Name = "magazine_description_txt";
             this.magazine_description_txt.ReadOnly = true;
-            this.magazine_description_txt.Size = new System.Drawing.Size(775, 358);
+            this.magazine_description_txt.Size = new System.Drawing.Size(582, 292);
             this.magazine_description_txt.TabIndex = 3;
             this.magazine_description_txt.Text = "";
             // 
             // magazines_list
             // 
             this.magazines_list.FormattingEnabled = true;
-            this.magazines_list.Location = new System.Drawing.Point(24, 33);
-            this.magazines_list.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.magazines_list.Location = new System.Drawing.Point(18, 27);
             this.magazines_list.Name = "magazines_list";
-            this.magazines_list.Size = new System.Drawing.Size(337, 361);
+            this.magazines_list.Size = new System.Drawing.Size(254, 304);
             this.magazines_list.TabIndex = 4;
             this.magazines_list.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.magazines_list_ItemCheck);
             this.magazines_list.SelectedIndexChanged += new System.EventHandler(this.magazines_list_SelectedIndexChanged);
@@ -64,10 +62,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(127, 410);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(95, 333);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Refresh List";
             this.button1.UseVisualStyleBackColor = true;
@@ -76,38 +73,35 @@
             // magazines_list_label
             // 
             this.magazines_list_label.AutoSize = true;
-            this.magazines_list_label.Location = new System.Drawing.Point(20, 11);
-            this.magazines_list_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.magazines_list_label.Location = new System.Drawing.Point(15, 9);
             this.magazines_list_label.Name = "magazines_list_label";
-            this.magazines_list_label.Size = new System.Drawing.Size(162, 17);
+            this.magazines_list_label.Size = new System.Drawing.Size(122, 13);
             this.magazines_list_label.TabIndex = 6;
             this.magazines_list_label.Text = "Unapproved magazines ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 33);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(308, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(201, 17);
+            this.label2.Size = new System.Drawing.Size(151, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Selected magazine description";
             // 
             // reviewTextBox
             // 
-            this.reviewTextBox.Location = new System.Drawing.Point(8, 23);
-            this.reviewTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reviewTextBox.Location = new System.Drawing.Point(6, 19);
             this.reviewTextBox.Name = "reviewTextBox";
-            this.reviewTextBox.Size = new System.Drawing.Size(1165, 298);
+            this.reviewTextBox.Size = new System.Drawing.Size(875, 243);
             this.reviewTextBox.TabIndex = 0;
             this.reviewTextBox.Text = "";
+            this.reviewTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // send_btn
             // 
-            this.send_btn.Location = new System.Drawing.Point(1075, 330);
-            this.send_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.send_btn.Location = new System.Drawing.Point(806, 268);
             this.send_btn.Name = "send_btn";
-            this.send_btn.Size = new System.Drawing.Size(100, 28);
+            this.send_btn.Size = new System.Drawing.Size(75, 23);
             this.send_btn.TabIndex = 2;
             this.send_btn.Text = "Send";
             this.send_btn.UseVisualStyleBackColor = true;
@@ -117,31 +111,28 @@
             // 
             this.groupBox1.Controls.Add(this.send_btn);
             this.groupBox1.Controls.Add(this.reviewTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(16, 446);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 362);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1196, 379);
+            this.groupBox1.Size = new System.Drawing.Size(897, 308);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Write a review";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(24, 852);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(18, 676);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(588, 28);
+            this.button2.Size = new System.Drawing.Size(219, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Test Reports";
+            this.button2.Text = "Generate Reports";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ReviewerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 895);
+            this.ClientSize = new System.Drawing.Size(921, 705);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.magazines_list_label);
@@ -149,9 +140,9 @@
             this.Controls.Add(this.magazines_list);
             this.Controls.Add(this.magazine_description_txt);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ReviewerForm";
             this.Text = "Reviewer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

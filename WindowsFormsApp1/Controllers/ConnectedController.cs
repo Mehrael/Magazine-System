@@ -1,14 +1,10 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Oracle.DataAccess.Client;
-using Oracle.DataAccess.Types;
 using WindowsFormsApp1.Models;
 namespace WindowsFormsApp1.Controllers
 {
-   public class ConnectedController
+    public class ConnectedController
     {
         string ordb = "Data source=orcl;User Id=scott;Password=tiger;";
         OracleConnection conn;
@@ -39,7 +35,7 @@ namespace WindowsFormsApp1.Controllers
             return insertCommand.ExecuteNonQuery();
         }
 
-        public List<Magazine> GetMagazines()
+        public List<Magazine> GetUnapporvedMagazines()
         {
             conn = new OracleConnection(ordb);
             conn.Open();
@@ -61,6 +57,7 @@ namespace WindowsFormsApp1.Controllers
                 magazine.Approved = dataReader.GetDecimal(5);
                 magazine.Published = dataReader.GetDecimal(6);
                 magazine.MagazineCover = dataReader.GetString(7);
+                if(magazine.Approved == 0)
                 magazines.Add(magazine);
             }
             return magazines;

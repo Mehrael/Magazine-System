@@ -38,6 +38,11 @@ namespace WindowsFormsApp1
             authors_comboBox.DataSource = authors;
             authors_comboBox.DisplayMember = "Name";
             authors_comboBox.ValueMember = "Id";
+
+            List<Magazine> notApprovedMagazine = connected.GetUnapporvedMagazines();
+            magazines_list.DataSource = notApprovedMagazine;
+            magazines_list.DisplayMember = "Title";
+            magazines_list.ValueMember = "Id";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,7 +52,7 @@ namespace WindowsFormsApp1
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -57,15 +62,7 @@ namespace WindowsFormsApp1
 
         private void authorsIds_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                User selectedUser = (User)authors_comboBox.SelectedValue;
-                reviewTextBox.Text = selectedUser.Id.ToString();
-            }
-            catch
-            {
-                reviewTextBox.Text = authors_comboBox.SelectedValue.ToString();
-            }
+           
         }
 
         private void Send_Click(object sender, EventArgs e)
@@ -74,6 +71,22 @@ namespace WindowsFormsApp1
             Feedback feedback = new Feedback();
           //  feedback.sourceId=
             //connected.sendFeedbackToAuthor();
+        }
+
+        private void magazines_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var mag = (Magazine)magazines_list.SelectedItem;
+            magazine_description_txt.Text = mag.Description;
+        }
+
+        private void magazines_list_DoubleClick(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void magazines_list_SelectedValueChanged(object sender, EventArgs e)
+        {
+         
         }
     }
 }

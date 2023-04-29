@@ -38,7 +38,7 @@
             // 
             // generate_report
             // 
-            this.generate_report.Location = new System.Drawing.Point(536, 54);
+            this.generate_report.Location = new System.Drawing.Point(454, 70);
             this.generate_report.Name = "generate_report";
             this.generate_report.Size = new System.Drawing.Size(75, 23);
             this.generate_report.TabIndex = 0;
@@ -51,22 +51,22 @@
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 118);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(33, 123);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(776, 421);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(648, 256);
             this.crystalReportViewer1.TabIndex = 1;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // startdate_txt
             // 
-            this.startdate_txt.Location = new System.Drawing.Point(79, 29);
+            this.startdate_txt.Location = new System.Drawing.Point(89, 56);
             this.startdate_txt.Name = "startdate_txt";
             this.startdate_txt.Size = new System.Drawing.Size(243, 20);
             this.startdate_txt.TabIndex = 2;
             // 
             // enddate_txt
             // 
-            this.enddate_txt.Location = new System.Drawing.Point(79, 74);
+            this.enddate_txt.Location = new System.Drawing.Point(89, 97);
             this.enddate_txt.Name = "enddate_txt";
             this.enddate_txt.Size = new System.Drawing.Size(243, 20);
             this.enddate_txt.TabIndex = 3;
@@ -75,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Location = new System.Drawing.Point(27, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 4;
@@ -85,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 77);
+            this.label2.Location = new System.Drawing.Point(30, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 5;

@@ -32,7 +32,9 @@ namespace WindowsFormsApp1.Controllers
             insertCommand.Parameters.Add("sourceId", feedback.sourceId);
             insertCommand.Parameters.Add("destId", feedback.destinationId);
             insertCommand.Parameters.Add("magazineId", feedback.MagazineId);
-            return insertCommand.ExecuteNonQuery();
+            int r= insertCommand.ExecuteNonQuery();
+            conn.Close();
+            return r;
         }
 
         public List<Magazine> GetUnapporvedMagazines()
@@ -60,6 +62,7 @@ namespace WindowsFormsApp1.Controllers
                 if(magazine.Approved == 0)
                 magazines.Add(magazine);
             }
+            conn.Close();
             return magazines;
             }
         public List<Feedback> GetFeedbacks() {
@@ -82,6 +85,7 @@ namespace WindowsFormsApp1.Controllers
                 feedback.MagazineId = dataReader.GetDecimal(4);
                 feedbacks.Add(feedback);
             }
+            conn.Close();
             return feedbacks;
 
         }
@@ -117,6 +121,7 @@ namespace WindowsFormsApp1.Controllers
                 authors.Add(author);
                 Console.WriteLine(author.Name);
             }
+            conn.Close();
             return authors;
 
         }
@@ -127,7 +132,8 @@ namespace WindowsFormsApp1.Controllers
             OracleCommand cmd = new OracleCommand();
             cmd.Connection = conn;
             cmd.CommandText = "SELECT COUNT(*) FROM "+tableName;
-            decimal count =(decimal) cmd.ExecuteScalar();   
+            decimal count =(decimal) cmd.ExecuteScalar();
+            conn.Close();
             return ++count;
         }
 

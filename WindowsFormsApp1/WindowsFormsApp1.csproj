@@ -169,6 +169,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>UsersReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="cover page.pdf" />
+    <None Include="Database.docx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

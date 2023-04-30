@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
 {
     public partial class UserCommentForm : Form
     {
-
+        Magazine m;
         DisconnectedController disconnected = new DisconnectedController();
         static MagazineController magazine = new MagazineController();
         List<Magazine> PublishedMagazine = magazine.Get();
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
         {
             int  index = magazine_list.FocusedItem.Index;
 
-            Magazine m = magazine.Show(Convert.ToInt32(PublishedMagazine[index].id));
+           m = magazine.Show(Convert.ToInt32(PublishedMagazine[index].id));
 
             LikesCount_lbl.Text = m.likesCount.ToString() + " Likes";
 
@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
             magazine_description_txt.Text = PublishedMagazine[index].Description;
             Title_txt.Text = PublishedMagazine[index].Title;
             Content_txt.Text = m.Content;
+            
         }
 
         private void Like_btn_Click(object sender, EventArgs e)
@@ -60,12 +61,18 @@ namespace WindowsFormsApp1
             like.MAGAZINEID = PublishedMagazine[magazine_list.FocusedItem.Index].id;
 
             like = likeController.Create(like);
-            if (like != null)
-                MessageBox.Show("Liked");
+                if (like != null)
+                {
+                    MessageBox.Show("Liked");
+                    m.likesCount++;
+                    LikesCount_lbl.Text = m.likesCount.ToString() + " Likes";
+                }
 
         }
             else
                 MessageBox.Show("Select a magazine first");
+
+            this.Refresh();
         }
 
         private void Dislike_btn_Click(object sender, EventArgs e)
@@ -79,8 +86,12 @@ namespace WindowsFormsApp1
             like.MAGAZINEID = PublishedMagazine[magazine_list.FocusedItem.Index].id;
 
             like = likeController.Create(like);
-            if (like != null)
-                MessageBox.Show("DisLiked");
+                if (like != null)
+                {
+                    MessageBox.Show("DisLiked");
+                    m.likesCount--;
+                    LikesCount_lbl.Text = m.likesCount.ToString() + " Likes";
+                }
             }
             else
                 MessageBox.Show("Select a magazine first");

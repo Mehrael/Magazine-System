@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\WindowsFormsApp1",
-    "\\WindowsFormsApp1\\Controllers",
-    "\\WindowsFormsApp1\\Models"
+    ""
   ],
-  "SelectedNode": "\\DatabaseV2.sql",
+  "SelectedNode": "\\WindowsFormsApp1.sln",
   "PreviewInSolutionExplorer": false
 }
